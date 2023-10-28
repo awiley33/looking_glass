@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'json'
+
+# Load JSON file
+file_path = Rails.root.join('lib', 'cards.json')
+data = JSON.parse(File.read(file_path))
+
+# Create records
+data.each do |card_data|
+  Card.create!(card_data)
+end
