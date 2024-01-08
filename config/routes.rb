@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  namespace :api do
+    namespace :v0 do
+      resources :cards, only: [:index, :show]
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+      get 'spreads/one_card', to: 'spreads#one_card'
+      get 'spreads/three_card', to: 'spreads#three_card'
+    end
+  end
 end
